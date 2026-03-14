@@ -21,6 +21,7 @@ int main() {
 
     else{
         printf("\n Invalid Credentials ");
+        return 0;
     }
 
 
