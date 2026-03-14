@@ -14,7 +14,7 @@ int main(){
                 printf("admin");
                 break;
             case 2:
-                printf("user");
+                adminLogin("user");
                 break;
             case 3:
                 printf("Exiting.\n");
