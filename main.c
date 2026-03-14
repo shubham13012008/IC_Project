@@ -11,10 +11,10 @@ int main(){
         scanf("%d",&choice);
        switch (choice) {
             case 1:
-                printf("admin");
+                printf("user");
                 break;
             case 2:
-                adminLogin("user");
+                adminMenu();
                 break;
             case 3:
                 printf("Exiting.\n");

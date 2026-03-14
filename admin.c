@@ -6,7 +6,7 @@
         }
         return str1[i] - str2[i];
     }
-int adminLogin() {
+int adminMenu() {
     char username[20],password[20];
     printf("\n Admin Login ");
     printf("\n Enter Admin ID- ");
