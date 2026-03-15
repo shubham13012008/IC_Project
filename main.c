@@ -11,7 +11,7 @@ int main(){
         scanf("%d",&choice);
        switch (choice) {
             case 1:
-                printf("user");
+                grahakMenu();
                 break;
             case 2:
                 adminMenu();
