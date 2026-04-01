@@ -16,7 +16,7 @@ int main(){
                 grahakMenu();
                 break;
             case 2:
-                adminLogin();
+                adminMenu();
                 break;
             case 3:
                 printf("Exiting.\n");

@@ -30,7 +30,7 @@ int adminLogin();
 
 void addTrain();
 void grahakMenu();
-
+void adminMenu();
 
 
 #endif

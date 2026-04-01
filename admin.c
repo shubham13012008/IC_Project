@@ -72,3 +72,35 @@ void addTrain() {
     
     printf("Train no.%d added by the addmin \n", trains[trainCount-1].trainNo);
 }
+
+
+
+
+void adminMenu() {
+    if (!adminLogin()) return;
+
+    int chotu;
+    while (1) {
+        printf("Admin Dashboard\n");
+        printf("1. Add New Train\n");
+        printf("2. Edit Train Details\n");
+        printf("3. Delete Train\n");
+        printf("4. View Stats\n");
+        printf("5. Back to Main Menu\n");
+        printf("Choice: ");
+        scanf("%d", &chotu);
+
+        switch (chotu) {
+            case 1: addTrain();
+            break;
+            case 2: printf("Edit train");
+            break;
+            case 3: printf("Delete train");
+            break;
+            case 4: printf("View stats");
+            break;
+            case 5: return;
+            default: printf("Invalid option!\n");
+        }
+    }
+}
