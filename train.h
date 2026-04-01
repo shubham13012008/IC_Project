@@ -31,6 +31,7 @@ int adminLogin();
 void addTrain();
 void grahakMenu();
 void adminMenu();
+void deleteTrain();
 
 
 #endif
