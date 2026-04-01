@@ -1,6 +1,7 @@
 #include"train.h"
 void grahakMenu(){
     int parth;
+    char s[50], d[50], dt[50];
     while(1){
         printf("\n---- USER PORTAL ----");
         printf("\n1. Search Trains");
@@ -12,8 +13,18 @@ void grahakMenu(){
         
         switch(parth) {
             case 1:
-            // isko baad mein train add karne ke baad karenge
-            break;
+            printf("Enter Source: ");
+                scanf("%s", s);
+
+            printf("Enter Destination: "); 
+                scanf("%s", d);
+
+            printf("Enter Date (DD/MM/YYYY): "); 
+                scanf("%s", dt);
+
+               
+                break;
+// isko baad mein train add karne ke baad karenge
 
             case 2:
             printf("booking train");
@@ -27,7 +38,7 @@ void grahakMenu(){
             return;
 
             default:
-            printf("\nInvalid selection");
+            printf("Invalid selection\n");
         }
     }
 }
