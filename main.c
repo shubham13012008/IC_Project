@@ -1,4 +1,6 @@
 #include "train.h"
+Train trains[MAX_TRAINS];
+int trainCount = 0;
 int main(){
     int choice;
     while (1){
@@ -14,7 +16,7 @@ int main(){
                 grahakMenu();
                 break;
             case 2:
-                adminMenu();
+                adminLogin();
                 break;
             case 3:
                 printf("Exiting.\n");

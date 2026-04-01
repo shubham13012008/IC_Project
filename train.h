@@ -21,13 +21,15 @@ typedef struct {
     int seatsAC;
     int seatsSleeper;
 } Train;
+
+
 extern Train trains[MAX_TRAINS];
 extern int trainCount;
 
+int adminLogin();
 
-
-
-
+void addTrain();
+void grahakMenu();
 
 
 
