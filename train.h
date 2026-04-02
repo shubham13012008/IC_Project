@@ -22,6 +22,15 @@ typedef struct {
     int seatsSleeper;
 } Train;
 
+typedef struct {
+    int pnr;
+    int trainNo;
+    char passengerNaam[50];
+    char seatType[10]; 
+    float totalBill;       
+    int status;           
+} Booking;
+
 
 extern Train trains[MAX_TRAINS];
 extern int trainCount;
