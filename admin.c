@@ -72,6 +72,29 @@ void addTrain() {
     
     printf("Train no.%d added by the addmin \n", trains[trainCount-1].trainNo);
 }
+
+void deleteTrain() {
+    int tNumber, lokesh = 0;
+    printf("Enter Train Number to delete: \n");
+    scanf("%d", &tNumber);
+
+    for (int i = 0; i < trainCount; i++) {
+        if (trains[i].trainNo == tNumber) {
+            for (int j = i; j < trainCount - 1; j++) {
+                trains[j] = trains[j + 1];
+            }
+            trainCount--;
+            printf("Train deleted by admin using train no. \n");
+            lokesh = 1;
+            break;
+        }
+    }
+    if (lokesh != 1) {
+        printf("Train not found\n");
+    }
+}
+
+
 //Train me badlav by admin;
 void editTrain() {
     int dusriTrain, chetan=0;
@@ -97,26 +120,7 @@ void editTrain() {
     }
     if (!chetan) printf("Train not found!\n");
 }
-void deleteTrain() {
-    int tNumber, lokesh = 0;
-    printf("Enter Train Number to delete: \n");
-    scanf("%d", &tNumber);
 
-    for (int i = 0; i < trainCount; i++) {
-        if (trains[i].trainNo == tNumber) {
-            for (int j = i; j < trainCount - 1; j++) {
-                trains[j] = trains[j + 1];
-            }
-            trainCount--;
-            printf("Train deleted by admin using train no. \n");
-            lokesh = 1;
-            break;
-        }
-    }
-    if (lokesh != 1) {
-        printf("Train not found\n");
-    }
-}
 
 void adminMenu() {
     if (!adminLogin()) return;
