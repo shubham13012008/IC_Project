@@ -1,8 +1,11 @@
 #include "train.h"
 Train trains[MAX_TRAINS];
 int trainCount = 0;
+float totalPaise = 0.0;
+int totalBooking = 0;
 int main(){
     int choice;
+    loadFromFile();
     while (1){
        
         printf("     IIT JODHPUR RAILWAY SYSTEM\n");
@@ -19,6 +22,7 @@ int main(){
                 adminMenu();
                 break;
             case 3:
+                saveToFile();
                 printf("Exiting.\n");
                 exit(0);
             default:

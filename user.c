@@ -14,10 +14,10 @@ void grahakMenu(){
         switch(parth) {
             case 1:
             printf("Enter Source: ");
-                scanf("%s", s);
+                scanf(" %[^\n]", s);
 
             printf("Enter Destination: "); 
-                scanf("%s", d);
+                scanf(" %[^\n]", d);
 
             printf("Enter Date (DD/MM/YYYY): "); 
                 scanf("%s", dt);

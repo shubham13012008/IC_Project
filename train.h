@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+
 #define MAX_TRAINS 50
 #define MAX_BOOKING 100
 // Train ka structure admin ke liye store karne ke liye 
@@ -25,12 +27,16 @@ typedef struct {
 
 extern Train trains[MAX_TRAINS];
 extern int trainCount;
+extern float totalPaise;
+extern int totalBooking;
 
 int adminLogin();
 
 void addTrain();
 void grahakMenu();
 void adminMenu();
+void saveToFile();
+void loadFromFile();
 
 
 #endif

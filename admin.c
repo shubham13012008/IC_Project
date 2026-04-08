@@ -40,7 +40,7 @@ void addTrain() {
     scanf("%d", &trains[trainCount].trainNo);
 
     printf("Enter Train Name: ");
-    scanf("%s",trains[trainCount].naam);
+    scanf("%s", trains[trainCount].naam);
     printf("Enter Source City: ");
     scanf("%s", trains[trainCount].kahanSe);
 
