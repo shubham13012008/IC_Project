@@ -79,3 +79,91 @@ void bookTicket() {
         printf("Error: Train Number %d is not in our records.\n", train_num);
     }
 }
+void cancelTicket() {
+    int pnrInput;
+    int ticketMili = 0;
+    float refundAmount =0;
+    float cancellationCharge =0;
+    int bookingIndex = -1;
+    int trainIndex = -1;
+
+    printf("        TICKET CANCELLATION\n");
+
+    //Yahan par ham user se PNR no. le rhe hain
+    printf("Apna PNR number enter karein: \n");
+    scanf("%d", &pnrInput);
+
+    //Booking Checking basically PNR based
+    for (int i = 0; i < bookingCount; i++) {
+        if (bookings[i].pnr == pnrInput) {
+            bookingIndex = i;
+            ticketMili = 1;
+            break;
+        }
+    }
+    //let us suppose agar galat PNR daalde and booking na mile to
+    if (ticketMili == 0) {
+        printf("Is PNR par koi booking nahi mili hai.\n");
+        printf("Kripya karke sahi PNR enter karein.\n");
+        return;
+    }
+
+    //Ticket already cancelled to nhi uski checking
+    if (bookings[bookingIndex].status == 0) {
+        printf("\nSorry.\n");
+        printf("Lekin yeh ticket pehle hi cancel ho chuki hai.\n");
+        printf("Dubara cancel nahi ki ja sakti.\n");
+        return;
+    }
+
+    // Just user ko dikhane ke liye ki konsi ticket cancel ho rhi hai;
+    printf("\nTicket Details:\n");
+    printf("PNR Number      : %d\n", bookings[bookingIndex].pnr);
+    printf("Train Number    : %d\n", bookings[bookingIndex].trainNo);
+    printf("Seat Category   : %s\n", bookings[bookingIndex].seatType);
+    printf("Total Bill      : INR %.2f\n", bookings[bookingIndex].totalBill);
+
+    //Cancelling the Ticket
+    bookings[bookingIndex].status = 0;
+    printf("\nTicket ka status CANCELLED kar diya gaya hai.\n\n");
+
+    //Calculating refund and refund details show karna
+    cancellationCharge = bookings[bookingIndex].totalBill * 0.20;
+    refundAmount = bookings[bookingIndex].totalBill - cancellationCharge;
+
+    printf("\nRefund Details:\n");
+    printf("Total Fare           : INR %.2f\n", bookings[bookingIndex].totalBill);
+    printf("Cancellation Charge  : INR %.2f\n", cancellationCharge);
+    printf("Refund Amount        : INR %.2f\n", refundAmount);
+
+    //Finally correct train dhundna jisme seat update karni hai
+    for (int j = 0; j < trainCount; j++) {
+        if (trains[j].trainNo == bookings[bookingIndex].trainNo) {
+            trainIndex = j;
+            break;
+        }
+    }
+
+    //Seat updation
+    if (trainIndex != -1) {
+        if (strcmp(bookings[bookingIndex].seatType, "AC") == 0) {
+            trains[trainIndex].seatsAC++;
+            printf("\n\nAC seat train me wapas add kar di gayi hai.\n");
+            printf("Ab available AC seats: %d hain\n", trains[trainIndex].seatsAC);
+        }
+        else {
+            trains[trainIndex].seatsSleeper++;
+            printf("\nSleeper seat train me wapas add kar di gayi hai.\n");
+            printf("Ab available Sleeper seats: %d hain\n", trains[trainIndex].seatsSleeper);
+        }
+    }
+    else {
+        printf("Warning: Train record nahi mila.\n");
+        printf("Seat update nahi ho payi.\n");
+    }
+
+    // Final message
+    printf("\nTicket successfully cancel ho gayi hai.\n");
+    printf("Refund process completed.\n");
+    printf("Dhanyavaad!\n");
+}
