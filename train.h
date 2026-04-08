@@ -38,6 +38,8 @@ extern Train trains[MAX_TRAINS];
 extern int trainCount;
 extern float totalPaise;
 extern int totalBooking;
+extern Booking bookings[MAX_BOOKING];
+extern int bookingCount;
 
 int adminLogin();
 
@@ -48,6 +50,6 @@ void saveToFile();
 void loadFromFile();
 void editTrain();
 void deleteTrain();
-
+void bookTicket();
 
 #endif

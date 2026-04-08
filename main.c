@@ -3,6 +3,8 @@ Train trains[MAX_TRAINS];
 int trainCount = 0;
 float totalPaise = 0.0;
 int totalBooking = 0;
+Booking bookings[MAX_BOOKING]; 
+int bookingCount = 0;
 int main(){
     int choice;
     loadFromFile();
