@@ -41,14 +41,14 @@ void loadFromFile() {
     FILE *lokesh =  fopen("train_db.txt", "r");
     FILE *parth =  fopen("revenue_info.txt", "r");
 
-    // If the train file isn't there, it's a first-time run
+    //Agar file nhi hai toh nyi file banana
     if (lokesh   == NULL) {
         printf("\nStarting with an empty database.\n");
         trainCount = 0;
         return;
     }
 
-    // Read the total number of trains first
+    // Reading total no. of trains
     if (fscanf(lokesh, "%d", &trainCount) != 1) {
         trainCount = 0;
     }
