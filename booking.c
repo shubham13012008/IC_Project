@@ -167,3 +167,39 @@ void cancelTicket() {
     printf("Refund process completed.\n");
     printf("Dhanyavaad!\n");
 }
+void generateBill(float baseFare, char* category) {
+    float gstPercent;
+    float taxAmount;
+    float finalAmount;
+    
+    
+    if (strcmp(category, "AC") == 0) {
+        gstPercent = 12.0;
+        
+        taxAmount = (baseFare * gstPercent) / 100; 
+    } else {
+        gstPercent = 5.0;
+       
+        taxAmount = (baseFare * gstPercent) / 100;
+    }
+    
+   
+    finalAmount = baseFare + taxAmount;
+
+    
+    printf("\n---------- INVOICE ----------\n");
+    printf("Base Fare:      INR %.2f\n", baseFare);
+    
+    if (gstPercent == 12.0) {
+        printf("GST (12%%):      INR %.2f\n", taxAmount);
+    } else {
+        printf("GST (5%%):       INR %.2f\n", taxAmount);
+    }
+    
+    printf("-----------------------------\n");
+    printf("TOTAL PAYABLE:  INR %.2f\n", finalAmount);
+    printf("-----------------------------\n");
+    
+    
+    totalPaise = totalPaise + finalAmount; 
+}

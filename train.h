@@ -51,5 +51,6 @@ void loadFromFile();
 void editTrain();
 void deleteTrain();
 void bookTicket();
+void generateBill(float baseFare, char* category);
 
 #endif
