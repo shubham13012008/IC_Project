@@ -27,7 +27,7 @@ void grahakMenu(){
 // isko baad mein train add karne ke baad karenge
 
             case 2:
-            printf("booking train");
+            bookTicket();
             break;
 
             case 3:
