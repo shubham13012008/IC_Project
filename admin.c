@@ -73,7 +73,53 @@ void addTrain() {
     printf("Train no.%d added by the addmin \n", trains[trainCount-1].trainNo);
 }
 
+void deleteTrain() {
+    int tNumber, lokesh = 0;
+    printf("Enter Train Number to delete: \n");
+    scanf("%d", &tNumber);
 
+    for (int i = 0; i < trainCount; i++) {
+        if (trains[i].trainNo == tNumber) {
+            for (int j = i; j < trainCount - 1; j++) {
+                trains[j] = trains[j + 1];
+            }
+            trainCount--;
+            printf("Train deleted by admin using train no. \n");
+            lokesh = 1;
+            break;
+        }
+    }
+    if (lokesh != 1) {
+        printf("Train not found\n");
+    }
+}
+
+
+//Train me badlav by admin;
+void editTrain() {
+    int dusriTrain, chetan=0;
+    printf("\nEnter Train Number to edit: ");
+    scanf("%d", &dusriTrain);
+
+    for (int i = 0; i < trainCount; i++) {
+        if (trains[i].trainNo == dusriTrain) {
+            printf("Editing Train: %s\n", trains[i].naam);
+            printf("Enter New AC Fare: ");
+            scanf("%f", &trains[i].priceAC);
+            printf("Enter New Sleeper Fare: ");
+            scanf("%f", &trains[i].priceSleeper);
+            printf("Enter New AC Seats: ");
+            scanf("%d", &trains[i].seatsAC);
+            printf("Enter New Sleeper Seats: ");
+            scanf("%d", &trains[i].seatsSleeper);
+            
+            printf("Train details updated!\n");
+            chetan = 1;
+            break;
+        }
+    }
+    if (!chetan) printf("Train not found!\n");
+}
 
 
 void adminMenu() {
@@ -93,9 +139,9 @@ void adminMenu() {
         switch (chotu) {
             case 1: addTrain();
             break;
-            case 2: printf("Edit train");
+            case 2:editTrain();
             break;
-            case 3: printf("Delete train");
+            case 3: deleteTrain();
             break;
             case 4: printf("View stats");
             break;
