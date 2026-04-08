@@ -13,13 +13,12 @@ void saveToFile() {
 
 
 
-    // Saving trains using a manual loop
-    // First line is the total count
+    // Saving trains
 
     fprintf(lokesh, "%d\n",  trainCount);
     
     for (int j = 0;  j < trainCount; j++) {
-        // Writing each field separated by a comma
+      
         fprintf(lokesh, "%d,%s,%s,%s,%s,%d,%d,%.2f,%.2f,%d,%d\n", 
                 trains[j].trainNo, trains[j].naam, trains[j].kahanSe, 
                 trains[j].kahanTak, trains[j].tarik, trains[j].depTime, 
@@ -27,7 +26,8 @@ void saveToFile() {
                 trains[j].seatsAC, trains[j].seatsSleeper);
     }
 
-    // Saving total money and booking count in a second file
+    // Saving paise and total booking 
+    
     fprintf(parth, "%.2f %d\n", totalPaise, totalBooking);
 
     fclose(lokesh);
@@ -36,7 +36,7 @@ void saveToFile() {
     printf("\n[System] All data written to train_db.txt successfully.\n");
 }
 
-// Feature: Load Data at Startup
+
 void loadFromFile() {
     FILE *lokesh =  fopen("train_db.txt", "r");
     FILE *parth =  fopen("revenue_info.txt", "r");
@@ -53,7 +53,7 @@ void loadFromFile() {
         trainCount = 0;
     }
 
-    // Loop to read each train back into the array
+    //loop for seeing the train
     for (int j = 0;  j < trainCount; j++) {
         int fields = fscanf(lokesh, "%d,%s,%s,%s,%s,%d,%d,%f,%f,%d,%d", 
                &trains[j].trainNo, trains[j].naam, trains[j].kahanSe, 
@@ -62,7 +62,8 @@ void loadFromFile() {
                &trains[j].seatsAC, &trains[j].seatsSleeper);
     }
 
-    // Read back the revenue and booking count
+    // seeing revenue and total count
+    
     if (parth != NULL) {
         fscanf(parth, "%f %d", &totalPaise, &totalBooking);
         fclose(parth);
