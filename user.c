@@ -12,7 +12,7 @@ void grahakMenu() {
     scanf("%d", &parth);
 
     switch (parth) {
-    case 1:
+    case 1: {
       printf("Enter Source: ");
       scanf(" %[^\n]", s);
 
@@ -22,8 +22,30 @@ void grahakMenu() {
       printf("Enter Date (DD/MM/YYYY): ");
       scanf("%s", dt);
 
+      int matchCount = 0;
+      printf("\nAvailable Trains:\n");
+      for (int i = 0; i < trainCount; i++) {
+        if (strcmp(trains[i].kahanSe, s) == 0 &&
+            strcmp(trains[i].kahanTak, d) == 0 &&
+            strcmp(trains[i].tarik, dt) == 0) {
+            matchCount++;
+            printf("Train No: %d, Name: %s, Dep: %04d, Arr: %04d, AC: %.2f, SL: %.2f\n",
+              trains[i].trainNo, trains[i].naam, trains[i].depTime, trains[i].arrTime, trains[i].priceAC, trains[i].priceSleeper);
+        }
+      }
+
+      if (matchCount == 0) {
+          printf("No trains found for this route and date.\n");
+      } else {
+          int choice;
+          printf("\nEnter 1 to proceed to booking, or 0 to go back: ");
+          scanf("%d", &choice);
+          if (choice == 1) {
+             bookTicket();
+          }
+      }
       break;
-      // isko baad mein train add karne ke baad karenge
+    }
 
     case 2:
       bookTicket();
