@@ -121,7 +121,45 @@ void editTrain() {
     if (!chetan) printf("Train not found!\n");
 }
 
+void displayStats() {
+    int total_ac_seats = 0;
+    int total_sleeper_seats = 0;
+    int booked_ac = 0;
+    int booked_sleeper = 0;
+    int active_bookings = 0;
+    float collected_tax = 0.0;
+    float collected_revenue = 0.0;
 
+    for (int i = 0; i < trainCount; i++) {
+        total_ac_seats += trains[i].seatsAC;
+        total_sleeper_seats += trains[i].seatsSleeper;
+    }
+
+    for (int i = 0; i < bookingCount; i++) {
+        if (bookings[i].status == 1) { 
+            active_bookings++;
+            collected_revenue += bookings[i].totalBill;
+            
+            if (strcmp(bookings[i].seatType, "AC") == 0) {
+                booked_ac++;
+                float base = bookings[i].totalBill / 1.12;
+                collected_tax += (bookings[i].totalBill - base);
+            } else if (strcmp(bookings[i].seatType, "Sleeper") == 0) {
+                booked_sleeper++;
+                float base = bookings[i].totalBill / 1.03;
+                collected_tax += (bookings[i].totalBill - base);
+            }
+        }
+    }
+    printf("            SYSTEM STATISTICS             \n");
+    printf("Total Trains Managed  : %d\n", trainCount);
+    printf("Total AC Seats        : %d (Available) | %d (Booked)\n", total_ac_seats, booked_ac);
+    printf("Total Sleeper Seats   : %d (Available) | %d (Booked)\n", total_sleeper_seats, booked_sleeper);
+    printf("Active Bookings       : %d (Out of %d Total)\n", active_bookings, bookingCount);
+    printf("Total Revenue         : %.2f INR\n", collected_revenue > 0 ? collected_revenue : totalPaise);
+    printf("Total Tax Collected   : %.2f INR\n", collected_tax);
+    
+}
 void adminMenu() {
     if (!adminLogin()) return;
 
