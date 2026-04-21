@@ -181,7 +181,7 @@ void adminMenu() {
             break;
             case 3: deleteTrain();
             break;
-            case 4: printf("View stats");
+            case 4: displayStats();
             break;
             case 5: return;
             default: printf("Invalid option!\n");
